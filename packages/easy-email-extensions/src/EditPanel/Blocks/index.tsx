@@ -9,6 +9,7 @@ import { useExtensionProps } from '@extensions/components/Providers/ExtensionPro
 
 export function Blocks() {
   const { categories } = useExtensionProps();
+  console.log(categories);
 
   const defaultActiveKey = useMemo(
     () => [

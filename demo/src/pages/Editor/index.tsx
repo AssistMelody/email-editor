@@ -281,8 +281,38 @@ export default function Editor() {
       },
     ).html;
 
-    copy(html);
+    // copy(html);
+    const file = new Blob([html], {
+      type: 'text/html'
+    })
+    const link = URL.createObjectURL(file)
+    const downloadDom = document.createElement('a')
+    downloadDom.href = link;
+    downloadDom.download = 'download';
+    downloadDom.click()
+    // window.open(link)
     Message.success('Copied to pasteboard!');
+  };
+
+  const onPreviewHtml = (values: IEmailTemplate) => {
+    const html = mjml(
+      JsonToMjml({
+        data: values.content,
+        mode: 'production',
+        context: values.content,
+        dataSource: mergeTags,
+      }),
+      {
+        beautify: true,
+        validationLevel: 'soft',
+      },
+    ).html;
+
+    const file = new Blob([html], {
+      type: 'text/html'
+    })
+    const link = URL.createObjectURL(file)
+    window.open(link)
   };
 
   const onExportMJML = (values: IEmailTemplate) => {
@@ -292,9 +322,16 @@ export default function Editor() {
       context: values.content,
       dataSource: mergeTags,
     });
-
-    copy(html);
-    pushEvent({ event: 'MJMLExport', payload: { values, mergeTags } });
+    const file = new Blob([html], {
+      type: 'text/mjml'
+    })
+    const link = URL.createObjectURL(file)
+    const downloadDom = document.createElement('a')
+    downloadDom.href = link;
+    downloadDom.download = 'download.mjml';
+    downloadDom.click()
+    // copy(html);
+    // pushEvent({ event: 'MJMLExport', payload: { values, mergeTags } });
     Message.success('Copied to pasteboard!');
   };
 
@@ -396,7 +433,7 @@ export default function Editor() {
         autoComplete
         enabledLogic
         // enabledMergeTagsBadge
-        dashed={false}
+        dashed={true}
         mergeTags={mergeTags}
         mergeTagGenerate={tag => `{{${tag}}}`}
         onBeforePreview={onBeforePreview}
@@ -443,6 +480,7 @@ export default function Editor() {
                     <Button onClick={() => onExportMJML(values)}>Export MJML</Button>
 
                     <Button onClick={() => onExportHtml(values)}>Export html</Button>
+                    <Button onClick={() => onPreviewHtml(values)}>preview html</Button>
 
                     <Button onClick={() => openModal(values, mergeTags)}>
                       Send test email
@@ -454,24 +492,6 @@ export default function Editor() {
                     >
                       Save
                     </Button>
-                    <a
-                      target='_blank'
-                      href='https://github.com/m-Ryan/easy-email'
-                      style={{
-                        color: '#000',
-                        fontSize: 28,
-                        width: 33,
-                        height: 33,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: '#fff',
-                        borderRadius: '50%',
-                      }}
-                      onClick={() => pushEvent({ event: 'Github' })}
-                    >
-                      <IconGithub />
-                    </a>
                   </Stack>
                 }
               />

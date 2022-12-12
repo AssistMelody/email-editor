@@ -7,11 +7,11 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(async function (config) {
   try {
-    const token = await UserStorage.getToken();
-    if (!config.headers) {
-      config.headers = {};
-    }
-    config.headers.authorization = token;
+    // const token = await UserStorage.getToken();
+    // if (!config.headers) {
+    //   config.headers = {};
+    // }
+    // config.headers.authorization = token;
   } catch (error) {
     // window.location.assign(LOGIN_ADDRESS);
   } finally {
@@ -25,23 +25,19 @@ axiosInstance.interceptors.response.use(
       return resolve(res);
     });
   },
-  (error) => {
+  error => {
     throw {
       ...error,
       message: error?.response?.data?.message || error?.message || error,
     };
-  }
+  },
 );
 
 export const request = {
   async get<T>(url: string, config?: AxiosRequestConfig | undefined) {
-    return axiosInstance.get<T>(url, config).then((data) => data.data);
+    return axiosInstance.get<T>(url, config).then(data => data.data);
   },
-  async post<T>(
-    url: string,
-    data?: any,
-    config?: AxiosRequestConfig | undefined
-  ) {
-    return axiosInstance.post<T>(url, data, config).then((data) => data.data);
+  async post<T>(url: string, data?: any, config?: AxiosRequestConfig | undefined) {
+    return axiosInstance.post<T>(url, data, config).then(data => data.data);
   },
 };

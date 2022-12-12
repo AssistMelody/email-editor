@@ -15,7 +15,8 @@
   "dependencies": {
     "easy-localized-translation": "^1.0.2",
     "lerna": "^4.0.0",
-    "liquidjs": "^9.34.1"
+    "liquidjs": "^9.34.1",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@types/node": "^18.8.4",

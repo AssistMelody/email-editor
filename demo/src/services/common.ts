@@ -35,12 +35,18 @@ export const common = {
     ]);
   },
   sendTestEmail(data: { toEmail: string; subject: string; html: string; text: string }) {
-    return request.post('/email/user/send', {
-      to_email: data.toEmail,
-      subject: data.subject,
-      text: data.text,
-      html: data.html,
-    });
+    return request.post(
+      'http://ma-sihai-dev.marketin.cn/api/email/template/send',
+      {
+        email: {
+          content: data.html,
+          subject: null,
+        },
+        receiver: data.toEmail,
+        sender: { address: null, name: null },
+      },
+      { headers: { Authorization: 'bearer Eb-IyCSm51Z9N0pPYsaFZxxAKcY' } },
+    );
   },
 };
 
