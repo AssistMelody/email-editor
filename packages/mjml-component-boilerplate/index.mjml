@@ -1,0 +1,31 @@
+<mjml>
+  <mj-body>
+
+    <!-- The first component, mj-basic-component renders as a column child -->
+    <mj-section>
+      <mj-column>
+        <mj-form >
+          <mj-form-item>
+            <mj-form-label>aaa</mj-form-label>
+            <mj-form-control>
+              <mj-input type="color"></mj-input>
+            </mj-form-control>
+          </mj-form-item>
+        <mj-form>
+      </mj-column>
+       <mj-column>
+        <mj-form layout="vertical">
+          <mj-form-item>
+            <mj-form-label>bbb</mj-form-label>
+            <mj-form-control>
+              <mj-select>
+                <mj-option value="man">男</mj-option>
+                <mj-option value="woman">女</mj-option>
+              </mj-select>
+            </mj-form-control>
+          </mj-form-item>
+        <mj-form>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

@@ -6,7 +6,7 @@ const tokenKey = 'token-key';
 export class UserStorage {
   static async getAccount(): Promise<IUser> {
     const token = window.localStorage.getItem(tokenKey);
-    let account: IUser;
+    let account!: IUser;
     if (token) {
       const sesseionAccout = window.sessionStorage.getItem(sessionKey);
       if (sesseionAccout) {
@@ -26,18 +26,17 @@ export class UserStorage {
         }
       }
     } else {
-      const { data } = await axios.post<IUser>(
-        '/user/visitor/login',
-        {
-          phone: USER.phone,
-          password: USER.password,
-        },
-        {
-          baseURL: 'https://www.maocanhua.cn',
-        }
-      );
-
-      account = data;
+      // const { data } = await axios.post<IUser>(
+      //   '/user/visitor/login',
+      //   {
+      //     phone: USER.phone,
+      //     password: USER.password,
+      //   },
+      //   {
+      //     baseURL: 'https://www.maocanhua.cn',
+      //   }
+      // );
+      // account! = null
     }
     window.sessionStorage.setItem(sessionKey, JSON.stringify(account));
     window.localStorage.setItem(tokenKey, account.token);

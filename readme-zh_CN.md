@@ -32,6 +32,8 @@
   <img src="./join_discord.png" width="240">
 </a>
 
+[English](readme.md) | 简体中文
+
 ## 介绍
 
 Easy email 是基于[MJML](https://mjml.io/)开发的，拥有非常好的兼容性. 同时，它可以通过拖放编辑生成代码.

@@ -16,7 +16,7 @@
   ],
   "main": "./lib/index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "preview": "vite preview",
     "build": "vite build --config vite.production.config.ts",
     "template": "ts-node scripts/makeTemplates.js"

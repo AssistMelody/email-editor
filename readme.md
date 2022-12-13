@@ -32,6 +32,7 @@
   <img src="./join_discord.png" width="240">
 </a>
 
+English | [简体中文](readme-zh_CN.md)
 
 ## Introduction
 

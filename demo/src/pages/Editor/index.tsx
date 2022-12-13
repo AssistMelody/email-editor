@@ -157,6 +157,20 @@ const defaultCategories: ExtensionProps['categories'] = [
           />
         </div>
       </BlockAvatarWrapper>,
+      <BlockAvatarWrapper type={CustomBlocksType.PRODUCT_POPUP}>
+      <div
+        style={{
+          position: 'relative',
+          border: '1px solid #ccc',
+          marginBottom: 20,
+          width: '80%',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        }}
+      >
+        Popup
+      </div>
+    </BlockAvatarWrapper>,
     ],
   },
 ];
@@ -424,8 +438,8 @@ export default function Editor() {
         //   hoverColor: '#78A349',
         //   selectedColor: '#1890ff',
         // }}
-        // onAddCollection={addCollection}
-        // onRemoveCollection={({ id }) => removeCollection(id)}
+        onAddCollection={addCollection}
+        onRemoveCollection={({ id }) => removeCollection(id)}
         onUploadImage={onUploadImage}
         fontList={fontList}
         onSubmit={onSubmit}

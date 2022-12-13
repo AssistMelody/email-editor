@@ -1,0 +1,11 @@
+{
+  "packages": [
+    "./lib/MjForm.js",
+    "./lib/MjFormItem.js",
+    "./lib/MjFormControl.js",
+    "./lib/MjFormLabel.js",
+    "./lib/MjInput.js",
+    "./lib/MjSelect.js",
+    "./lib/MjOption.js"
+  ]
+}
