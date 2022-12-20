@@ -15,6 +15,7 @@ export default defineConfig({
       'easy-email-core': path.resolve('../packages/easy-email-core'),
       'easy-email-editor': path.resolve('../packages/easy-email-editor'),
       'easy-email-extensions': path.resolve('../packages/easy-email-extensions'),
+      'easy-email-mjml-form': path.resolve('../packages/easy-email-mjml-form'),
     },
   },
   optimizeDeps: {},

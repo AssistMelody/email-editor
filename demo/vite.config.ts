@@ -31,6 +31,7 @@ export default defineConfig({
       '@arco-design/web-react/dist/css/arco.css': path.resolve(
         './node_modules/@arco-design/web-react/dist/css/arco.css',
       ),
+      'easy-email-mjml-form': path.resolve('../packages/easy-email-mjml-form/components'),
     },
   },
 

@@ -32,7 +32,9 @@ const compile = () =>
       watchedComponents.forEach((compPath) => {
         const fullPath = path.join(process.cwd(), compPath.replace(/^components/, 'lib'))
         delete require.cache[fullPath]
-        registerComponent(require(fullPath).default)
+        if (!fullPath.includes('index.js')) {
+          registerComponent(require(fullPath).default)
+        }
       })
 
       fs.readFile(path.normalize('./index.mjml'), 'utf8', (err, data) => {
