@@ -18,8 +18,8 @@ const walkSync = (dir, filelist = []) => {
 
 const watchedComponents = walkSync('./components')
 
-const compile = () =>
-  gulp
+const compile = () => {
+  return gulp
     .src(path.normalize('components/**/*.js'))
     .pipe(
       babel({
@@ -32,9 +32,7 @@ const compile = () =>
       watchedComponents.forEach((compPath) => {
         const fullPath = path.join(process.cwd(), compPath.replace(/^components/, 'lib'))
         delete require.cache[fullPath]
-        if (!fullPath.includes('index.js')) {
-          registerComponent(require(fullPath).default)
-        }
+        registerComponent(require(fullPath).default)
       })
 
       fs.readFile(path.normalize('./index.mjml'), 'utf8', (err, data) => {
@@ -43,6 +41,7 @@ const compile = () =>
         fs.writeFileSync(path.normalize('./index.html'), result.html)
       })
     })
+}
 
 gulp.task('build', compile)
 

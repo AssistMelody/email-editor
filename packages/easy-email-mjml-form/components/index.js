@@ -1,7 +1,0 @@
-export { default as MjForm } from './MjForm.js'
-export { default as MjFormItem } from './MjFormItem.js'
-export { default as MjFormControl } from './MjFormControl.js'
-export { default as MjFormLabel } from './MjFormLabel.js'
-export { default as MjInput } from './MjInput.js'
-export { default as MjSelect } from './MjSelect.js'
-export { default as MjOption } from './MjOption.js'
