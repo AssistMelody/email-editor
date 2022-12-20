@@ -27,7 +27,7 @@ export function useEmailModal() {
   const emailSendLoading = useLoading(email.loadings.send);
 
   const onSendEmail = useCallback(
-    async (values: { toEmail: string; mergeTags: string }) => {
+    async (values: { toEmail: string; mergeTags: string, token:string }) => {
       if (!emailData) return null;
 
       let mergeTagsPayload = {};
@@ -53,6 +53,8 @@ export function useEmailModal() {
         event: 'TestEmailSend',
         payload: { email: values.toEmail, json: emailData.content, html },
       });
+      console.log(values);
+
       dispatch(
         email.actions.send({
           data: {
@@ -60,11 +62,15 @@ export function useEmailModal() {
             subject: emailData.subject,
             text: emailData.subTitle || emailData.subject,
             html: html,
+            token: values.token? values.token.trim() : 'Eb-IyCSm51Z9N0pPYsaFZxxAKcY'
           },
           success: () => {
             closeModal();
             Message.success('Email send!');
           },
+          error:(msg)=>{
+            Message.error(msg);
+          }
         })
       );
     },
@@ -104,6 +110,7 @@ export function useEmailModal() {
             onCancel={closeModal}
           >
             <TextField autoFocus name='toEmail' label='To email' />
+            <TextField autoFocus name='token' label='set token' />
             <TextAreaField
               rows={15}
               autoFocus

@@ -26,7 +26,7 @@ export default function Frame({
 
   return (
     <Layout>
-      <Header style={{ padding: '0 20px', backgroundColor: '#001529' }}>
+      {/* <Header style={{ padding: '0 20px', backgroundColor: '#001529' }}>
         <Stack distribution='equalSpacing' alignment='center'>
           <h1 style={{ color: 'white', margin: '15px 0' }}>Easy-email</h1>
 
@@ -79,9 +79,9 @@ export default function Frame({
             </Stack>
           </div>
         </Stack>
-      </Header>
+      </Header> */}
       <Layout>
-        <Sider width={200}>
+        {/* <Sider width={200}>
           <Menu
             defaultSelectedKeys={['1']}
             defaultOpenKeys={['sub1']}
@@ -91,7 +91,7 @@ export default function Frame({
               <Menu.Item key='1'>Templates</Menu.Item>
             </SubMenu>
           </Menu>
-        </Sider>
+        </Sider> */}
         <Layout style={{ padding: 24 }}>
           <Stack vertical>
             {breadcrumb && (

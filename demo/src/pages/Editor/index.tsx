@@ -471,15 +471,15 @@ export default function Editor() {
                       icon={isDarkMode ? <IconMoonFill /> : <IconSunFill />}
                     ></Button>
 
-                    <Select
+                    {/* <Select
                       onChange={onChangeTheme}
                       value={theme}
                     >
                       <Select.Option value='blue'>Blue</Select.Option>
                       <Select.Option value='green'>Green</Select.Option>
                       <Select.Option value='purple'>Purple</Select.Option>
-                    </Select>
-                    <Select
+                    </Select> */}
+                    {/* <Select
                       onChange={setLocale}
                       value={locale}
                     >
@@ -487,7 +487,7 @@ export default function Editor() {
                       <Select.Option value='zh-Hans'>中文简体</Select.Option>
                       <Select.Option value='ja'>Japanese</Select.Option>
                       <Select.Option value='it'>Italian</Select.Option>
-                    </Select>
+                    </Select> */}
 
                     <Button onClick={openMergeTagsModal}>Update mergeTags</Button>
 
@@ -499,13 +499,13 @@ export default function Editor() {
                     <Button onClick={() => openModal(values, mergeTags)}>
                       Send test email
                     </Button>
-                    <Button
+                    {/* <Button
                       loading={isSubmitting}
                       type='primary'
                       onClick={() => submit()}
                     >
                       Save
-                    </Button>
+                    </Button> */}
                   </Stack>
                 }
               />

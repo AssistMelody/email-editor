@@ -34,19 +34,31 @@ export const common = {
       },
     ]);
   },
-  sendTestEmail(data: { toEmail: string; subject: string; html: string; text: string }) {
-    return request.post(
-      'http://ma-sihai-dev.marketin.cn/api/email/template/send',
-      {
-        email: {
-          content: data.html,
-          subject: null,
+  sendTestEmail(data: {
+    toEmail: string;
+    subject: string;
+    html: string;
+    text: string;
+    token: string;
+  }) {
+    return request
+      .post<{ code: number; message: string }>(
+        'http://ma-sihai-dev.marketin.cn/api/email/template/send',
+        {
+          email: {
+            content: data.html,
+            subject: null,
+          },
+          receiver: data.toEmail,
+          sender: { address: null, name: null },
         },
-        receiver: data.toEmail,
-        sender: { address: null, name: null },
-      },
-      { headers: { Authorization: 'bearer Eb-IyCSm51Z9N0pPYsaFZxxAKcY' } },
-    );
+        { headers: { Authorization: `bearer ${data.token}` } },
+      )
+      .then(res => {
+        if (res.code != 0) {
+          return Promise.reject(res.message);
+        }
+      });
   },
 };
 

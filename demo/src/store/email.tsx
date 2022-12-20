@@ -12,10 +12,15 @@ export default createSliceState({
       payload: {
         data: Parameters<typeof services.common.sendTestEmail>[0];
         success: () => void;
+        error:(msg:string)=>void
       }
     ) => {
-      await services.common.sendTestEmail(payload.data);
-      payload.success();
+      try {
+       await services.common.sendTestEmail(payload.data);
+        payload.success();
+      } catch (error) {
+        payload.error(error as string);
+      }
     },
   },
 });
